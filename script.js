@@ -20,13 +20,13 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 // Iconos personalizados
 const contenedorIcono = L.icon({
     iconUrl: 'contenedor-icon.png', // Ruta de la imagen del contenedor
-    iconSize: [32, 32],            // Tamaño del icono
+    iconSize: [32, 32],            
     iconAnchor: [16, 16],          // Punto de anclaje del icono
     popupAnchor: [0, -32],         // Punto donde aparece el popup
 });
 
 const recicladoIcono = L.icon({
-    iconUrl: 'reciclado-icon.png', // Ruta de la imagen del reciclado
+    iconUrl: 'reciclado-icon.png', 
     iconSize: [50, 50],            
     iconAnchor: [25, 25],          
     popupAnchor: [0, -40],         
