@@ -40,7 +40,7 @@ console.log("Mapa centrado en el CTRUZ.");
 // Lista para almacenar los contenedores y rutas
 let contenedores = [];
 let rutas = [];
-let contadorID = 1; // Contador para las IDs de los contenedores
+let contadorID = 1; 
 
 // Función para cargar datos desde localStorage
 function cargarDatos() {
