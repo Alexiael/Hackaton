@@ -1,0 +1,150 @@
+¿Por qué he realizado cambios?
+Quería que fuera algo más interactivo, dinámico, fácil de utilizar y visual.
+El código tiene una estructura más modular para ir añadiendo más funcionalidades y mejoras.
+Es un código bastante más complejo, pero merece la pena (a mi juicio).
+Quería hacer algo más elaborado y chachi al ser una tarea de "recuperación".
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Inicialización del mapa:
+*************************
+- Al cargar la página, se inicializa el mapa centrado en el centro de operaciones.
+  (he cambiado las coordenadas del ejemplo por unas reales de puntos clave de Zaragoza)
+- El mapa está vacío inicialmente (sin contenedores ni rutas visibles).
+- He utilizado la librería leaflet para uso de las opciones del mapa.
+- He cambiado la apariencia del mapa con carto.
+- He personalizado los iconos y líneas de ruta.
+
+Entrada de datos:
+*****************
+- El usuario ingresa manualmente los datos de los contenedores (latitud, longitud, nivel de llenado, capacidad) mediante un formulario.
+- Cada vez que se agrega un contenedor, éste se visualiza en el mapa con un marcador y detalles asociados.
+- Las ID de los contenedores se generan automáticamente (más cómodo que hacerlo a mano y evitar duplicados).
+
+Cálculo y generación de rutas:
+******************************
+- Las rutas se generan automáticamente cada vez que se agregan contenedores.
+- Si no hay contenedores o los datos no cumplen con los criterios, no se generan rutas.
+
+Resultados:
+***********
+Las rutas generadas se visualizan en el mapa:
+- Incluyen líneas conectando los puntos de recolección y el centro de operaciones.
+- Los colores y estilos de las rutas reflejan la carga del camión en cada tramo (verde, amarillo y rojo).
+- Tooltips y popups ofrecen información detallada sobre cada ruta, incluyendo el orden en el que el camión recogerá cada contenedor.
+- He ampliado los niveles de prioridad a 4, para tener más precisión en el llenado del camión (maxima, alta, media y baja).
+- He mejorado la lógica para la generación de rutas para aprovechar tanto la carga del camión como el ahorro de combustible.
+  El camión irá primero a los contenedores más llenos (prioridad más alta) y más cercanos. Continuará así hasta que el espacio
+  en el camión no sea suficiente, entonces para aprovechar dicho espacio restante, acudirá a otro contenedor con menos prioridad
+  pero cuya carga quepa en el espacio restante en el camión y que esté cerca del último contenedor recogido.
+
+Persistencia de datos:
+*********************
+- Los datos de los contenedores y rutas se guardan automáticamente en localStorage (navegador).
+- Al recargar la página, se cargan los datos guardados, restaurando los marcadores y las rutas.
+
+Interactividad:
+***************
+El programa permite al usuario interactuar en tiempo real:
+- Agregar nuevos contenedores.
+- Ver resultados visuales dinámicos.
+- Explorar detalles sobre las rutas y contenedores en el mapa.
+
+Control y debug:
+****************
+- Uso de console log para control de errores y verificación en cada paso por consola.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Coordenadas de ejemplo para realización de pruebas:
+***************************************************
+
+- Plaza del Pilar
+Latitud: 41.65606
+Longitud: -0.87895
+
+- Estación Delicias
+Latitud: 41.67004
+Longitud: -0.91077
+
+- Parque Grande 
+Latitud: 41.63271
+Longitud: -0.89588
+
+- Puente de Piedra
+Latitud: 41.65779
+Longitud: -0.87515
+
+- La Almozara 
+Latitud: 41.65881
+Longitud: -0.89298
+
+- Gran Vía 
+Latitud: 41.64318
+Longitud: -0.89203
+
+- Parque Tío Jorge
+Latitud: 41.66202
+Longitud: -0.86525
+
+- Centro Comercial Puerto Venecia
+Latitud: 41.60797
+Longitud: -0.87617
+
+- Basílica del Pilar 
+Latitud: 41.65639
+Longitud: -0.87742
+
+- Zona Expo (Acuario de Zaragoza)
+Latitud: 41.66465
+Longitud: -0.91556
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Mejoras necesarias:
+*******************
+- Mejorar la apariencia general de la página (rehubicación de elementos, pequeñas animaciones y transiciones, botones, zoom del mapa...etc)
+- Implementar algo similar a un panel de control.
+- Incorporar la función de eliminación de contenedores, rutas y camiones.
+- Incluir validaciones en el formulario (campo no vacío, coordenadas y otros valores dentro de rango permitido).
+- Mostrar mensaje de aviso en el inicio si no existen contenedores o rutas disponibles e indicar al usuario qué debe hacer.
+- Mejorar la información mostrada en los popups y Tooltips.
+- Que sea full responsive.
+
+
+Mejoras opcionales viables:
+***************************
+- Almacenar datos en un bdd en lugar de en localStorage.
+- Diferenciar los marcadores de los contenedores por nivel de llenado (verde, amarillo, naranja, rojo). 
+  Ahora todos los iconos son verdes.
+- Mostrar la dirección que sigue el camión en la ruta con flechas.
+  Lo he intentado con las opciones del mapa pero la consola me devolvía errores que no sabía corregir.
+- Añadir un desplegable en el formulario para seleccionar coordenadas de ubicaciones ya existentes.
+- Incluir opciones de filtrado para la visualización de datos
+- Implementar la modificación de un contenedor sin necesidad de eliminarlo y agregarlo nuevamente.
+- Implementar un historial de rutas y su visualización.
+- Implementar un zoom concreto cuando se selecciona una ruta (map.fitBounds()).
+- Implementar algún método de exportación / importación de datos (csv, jason..).
+- Mostrar datos estadísticos y resúmenes.
+- Agrupación y asignación de contenedores por zonas (Leaflet.markercluster).
+- Implementar distintos tipos de contenedores y sus respectivos camiones (papel, plástico, vidrio...etc)
+- Saber qué contenedores se llenan antes, cuales menos, cuales nunca y poder valorar rehubicaciones 
+  de contenedores para su mejor aprovechamiento.
+- Previsualización de la información del nuevo contenedor antes de incluirlo.
+- Edición de múltiples contenedores al mismo tiempo.
+- Exportar el mapa como imagen (html2canvas) para descargarlo.
+- Turoriales para los usuarios.
+
+
+Mejoras opcionales inviables:
+*****************************
+- Geolocalización del camión el tiempo real con estimaciones de tiempo, gasto de combustible..etc.
+- Gestión de incidencias en contenedores o camiones.
+- Franja horaria en la que se llenan más los contenedores, tráfico...etc.
+- Gestión de conductores y operarios de mantenimiento.
+- Simulador de rutas.
+- Notificaciones en tiempo real (SweetAlert).
+- Añadir restricciones de tiempo (Ej. de 8.00 a 14.00).
+- Opción multilingue con boton o cogiendo la configuracion del navegador.
+- Añadir opciones de accesibilidad.

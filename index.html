@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackaton</title>
+    <!-- Estilos de Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.polylinedecorator/1.7.0/leaflet.polylineDecorator.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Hackaton</h1>
+    </header>
+
+    <main>
+        <!-- Contenedor del mapa -->
+        <div id="map" style="width: 100%; height: 600px;"></div>
+        <!-- Formulario para ingresar datos -->
+        <section id="inputs">
+            <h2>Agregar Contenedores</h2>
+            <form id="form-container">
+                <!-- <label for="id">ID:</label>
+                <input type="number" id="id" name="id" required> -->
+
+                <label for="lat">Latitud:</label>
+                <input type="number" id="lat" name="lat" step="0.000001" required>
+
+                <label for="lon">Longitud:</label>
+                <input type="number" id="lon" name="lon" step="0.000001" required>
+
+                <label for="nivel">Nivel de llenado (%):</label>
+                <input type="number" id="nivel" name="nivel" min="0" max="100" required>
+
+                <label for="capacidad">Capacidad (kg):</label>
+                <input type="number" id="capacidad" name="capacidad" required>
+
+                <button type="submit">Agregar Contenedor</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
